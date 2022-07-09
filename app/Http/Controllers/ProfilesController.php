@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class ProfilesController extends Controller
 {
-    public function index($user)
+    public function show($user)
     {
         $id = User::select('id')->where('username', $user)->first();
         $obj = User::findOrFail($id)->first();
@@ -18,7 +18,7 @@ class ProfilesController extends Controller
         }
         else
         {
-            return view('home', [
+            return view('profiles.show', [
                 'user' => $obj,
             ]);
         }
