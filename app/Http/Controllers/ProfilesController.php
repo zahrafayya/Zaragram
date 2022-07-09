@@ -10,6 +10,7 @@ class ProfilesController extends Controller
     public function index($user)
     {
         $id = User::select('id')->where('username', $user)->first();
+        $obj = User::findOrFail($id)->first();
 
         if(is_null($id))
         {
@@ -18,7 +19,7 @@ class ProfilesController extends Controller
         else
         {
             return view('home', [
-                'user' => $user,
+                'user' => $obj,
             ]);
         }
     }
