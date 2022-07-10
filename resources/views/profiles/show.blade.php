@@ -9,10 +9,10 @@
         <div class="col-9 pt-5">
             <div class="d-flex justify-content-between align-items-baseline">
                 <h1>{{ $user->username }}</h1>
-                <a href="">Add New Post</a>
+                <a href="/p/create">Add New Post</a>
             </div>
             <div class="d-flex">
-                <div class="pr-5"><strong>479</strong> posts</div>
+                <div class="pr-5"><strong>{{ $user->posts->count() }}</strong> posts</div>
                 <div class="pr-5"><strong>104K</strong> followers</div>
                 <div class="pr-5"><strong>356</strong> following</div>
             </div>
@@ -22,20 +22,17 @@
         </div>
     </div>
     <div class="row pt-5">
-        <div class="col-4">
-            <img class="w-100" src="https://thumbs.dreamstime.com/b/cute-cat-portrait-square-photo-beautiful-white-closeup-105311158.jpg">
+    <?php $i = 0; ?>
+    @foreach($user->posts as $post)
+        @if($i % 3 == 0 && $i != 0)
         </div>
-        <div class="col-4">
-            <img class="w-100" src="https://thumbs.dreamstime.com/b/cute-cat-portrait-square-photo-beautiful-white-closeup-105311158.jpg">
-        </div>
-        <div class="col-4">
-            <img class="w-100" src="https://thumbs.dreamstime.com/b/cute-cat-portrait-square-photo-beautiful-white-closeup-105311158.jpg">
-        </div>
-    </div>
-    <div class="row pt-5">
-        <div class="col-4">
-            <img class="w-100" src="https://thumbs.dreamstime.com/b/cute-cat-portrait-square-photo-beautiful-white-closeup-105311158.jpg">
-        </div>
+        <div class="row pt-5">
+        @endif
+            <div class="col-4">
+                <img class="w-100" src="/storage/{{ $post->image }}">
+            </div>
+        <?php $i++; ?>
+    @endforeach
     </div>
 </div>
 @endsection
