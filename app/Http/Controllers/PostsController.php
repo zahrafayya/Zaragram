@@ -38,4 +38,11 @@ class PostsController extends Controller
 
         return redirect('/' . auth()->user()->username);
     }
+
+    public function show(Post $post)
+    {
+        return view('posts.show',[
+            'post' => $post
+        ]);
+    }
 }

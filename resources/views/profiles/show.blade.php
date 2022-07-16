@@ -29,7 +29,9 @@
         <div class="row pt-5">
         @endif
             <div class="col-4">
-                <img class="w-100" src="/storage/{{ $post->image }}">
+                <a href="/p/{{ $post->id }}">
+                    <img class="w-100" src="/storage/{{ $post->image }}">
+                </a>
             </div>
         <?php $i++; ?>
     @endforeach
