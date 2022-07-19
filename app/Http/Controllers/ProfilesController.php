@@ -27,6 +27,9 @@ class ProfilesController extends Controller
     public function edit($user)
     {
         $obj = User::findOrFail($user)->first();
+
+        $this->authorize('update', $user->profile);
+
         return view('profiles.edit', [
             'user' => $obj,
         ]);
@@ -43,7 +46,7 @@ class ProfilesController extends Controller
         ]);
 
         $obj = User::findOrFail($user)->first();
-        $obj->profile->update($data);
+        auth()->$obj->profile->update($data);
 
         return redirect('/profile/' . auth()->user()->username);
     }
