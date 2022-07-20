@@ -48,10 +48,12 @@ class User extends Authenticatable
         parent::boot();
 
         static::created(function ($user) {
-            Profile::create([
+            $profile = Profile::create([
                 'user_id' => $user->id,
                 'title' => $user->username,
             ]);
+
+            $user->profile = $profile;
         });
     }
 
