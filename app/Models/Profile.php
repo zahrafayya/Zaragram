@@ -9,6 +9,11 @@ class Profile extends Model
 {
     protected $guarded = [];
 
+    public function profileImage()
+    {
+        return ($this->image) ? '/storage/'.$this->image : '/storage/profpics/default_avatar.jpg';
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);
