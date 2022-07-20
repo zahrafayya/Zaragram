@@ -29,7 +29,7 @@ class ProfilesController extends Controller
     {
         $obj = User::findOrFail($user)->first();
 
-        $this->authorize('update', $user->profile);
+        $this->authorize('update', $obj->profile);
 
         return view('profiles.edit', [
             'user' => $obj,
@@ -42,11 +42,8 @@ class ProfilesController extends Controller
             'image' => 'image',
             'title' => 'required',
             'description' => 'required',
-            'url' => 'url',
-
+            'url' => ['url', 'nullable']
         ]);
-
-        $obj = User::findOrFail($user)->first();
 
         if (request('image')) // do something special if the request have 'image'
         {
@@ -54,12 +51,16 @@ class ProfilesController extends Controller
 
             $image = Image::make(public_path("storage/{$imagePath}"))->fit(1000, 1000);
             $image->save();
-        }
 
-        auth()->$obj->profile->update(array_merge(
-            $data,
-            ['image' => $imagePath],
-        ));
+            auth()->user()->profile->update(array_merge(
+                $data,
+                ['image' => $imagePath],
+            ));
+        }
+        else
+        {
+            auth()->user()->profile->update($data);
+        }
 
         return redirect('/profile/' . auth()->user()->username);
     }
