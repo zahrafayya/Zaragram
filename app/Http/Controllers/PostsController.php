@@ -14,6 +14,11 @@ class PostsController extends Controller
         $this->middleware('auth');
     }
 
+    public function index()
+    {
+
+    }
+
     public function create()
     {
         return view('posts.create');
@@ -41,8 +46,11 @@ class PostsController extends Controller
 
     public function show(Post $post)
     {
+        $follows = (auth()->user()) ? auth()->user()->following->contains('user_id', $post->user->id) : false;
+
         return view('posts.show',[
-            'post' => $post
+            'post' => $post,
+            'follows' => $follows
         ]);
     }
 }
