@@ -13,6 +13,8 @@ class ProfilesController extends Controller
         $id = User::select('id')->where('username', $username)->first();
         $obj = User::findOrFail($id)->first();
 
+        $follows = (auth()->user()) ? auth()->user()->following->contains('user_id', $obj->id) : false;
+
         if(is_null($id))
         {
             dd("error");
@@ -21,6 +23,7 @@ class ProfilesController extends Controller
         {
             return view('profiles.show', [
                 'user' => $obj,
+                'follows' => $follows
             ]);
         }
     }

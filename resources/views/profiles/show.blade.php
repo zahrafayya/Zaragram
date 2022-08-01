@@ -13,7 +13,11 @@
                     @cannot('update', $user->profile)
                     <form class="form-horizontal" action="{{route('follow', array('user' => $user->id))}}" method="POST">
                         @csrf
-                        <button class="btn btn-primary ml-4" name="follow" value="following">Follow</button>
+                        @if( $follows === false )
+                            <button class="btn btn-primary ml-4" name="follow" value="following">Follow</button>
+                        @else
+                            <button class="btn btn-outline-dark ml-4" name="follow" value="following">Unfollow</button>
+                        @endif
                     </form>
                     @endcannot
                 </div>
