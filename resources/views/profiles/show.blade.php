@@ -21,9 +21,7 @@
                     </form>
                     @endcannot
                     @can('update', $user->profile)
-                    <form class="form-horizontal" action="{{route('profile.edit', array('id' => $user->id))}}" method="GET">
-                        <button class="btn btn-outline-dark ml-4" name="edit">Edit Profile</button>
-                    </form>
+                        <a class="btn btn-outline-dark ml-4" href="/profile/{{ $user->profile->id }}/edit">Edit Profile</a>
                     @endcan
                 </div>
                 @can('update', $user->profile)

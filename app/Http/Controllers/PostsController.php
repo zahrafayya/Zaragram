@@ -60,14 +60,14 @@ class PostsController extends Controller
 
     public function edit(Post $post)
     {
+        $this->authorize('update', $post);
+
         return view('posts.edit', compact('post'));
     }
 
     public function update(Post $post)
     {
         dd($post);
-
-        $this->authorize('update', $post);
 
         $data = request()->validate([
             'caption' => 'required',

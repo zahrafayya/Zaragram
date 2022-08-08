@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Intervention\Image\Facades\Image;
 
@@ -44,15 +45,13 @@ class ProfilesController extends Controller
         }
     }
 
-    public function edit($user)
+    public function edit($profile)
     {
-        $obj = User::findOrFail($user)->first();
+        $user = Auth::user();
 
-        $this->authorize('update', $obj->profile);
+        $this->authorize('update', $user->profile);
 
-        return view('profiles.edit', [
-            'user' => $obj,
-        ]);
+        return view('profiles.edit', compact('user'));
     }
 
     public function update($user)
