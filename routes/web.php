@@ -1,6 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FollowsController;
+use App\Http\Controllers\ProfilesController;
+use App\Http\Controllers\PostsController;
+use \App\Mail\NewUserWelcomeMail;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -17,15 +22,21 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::post('follow/{user}', [App\Http\Controllers\FollowsController::class, 'store'])->name('follow');
+Route::get('/email', function () {
+    return new NewUserWelcomeMail();
+});
 
-Route::get('/profile/{username}', [App\Http\Controllers\ProfilesController::class, 'show'])->name('profile.show');
-Route::get('/profile/{id}/edit', [App\Http\Controllers\ProfilesController::class, 'edit'])->name('profile.edit');
-Route::patch('/profile/{id}', [App\Http\Controllers\ProfilesController::class, 'update'])->name('profile.update');
+Route::post('follow/{user}', [FollowsController::class, 'store'])->name('follow');
+
+Route::get('/profile/{username}', [ProfilesController::class, 'show'])->name('profile.show');
+Route::get('/profile/{id}/edit', [ProfilesController::class, 'edit'])->name('profile.edit');
+Route::patch('/profile/{id}', [ProfilesController::class, 'update'])->name('profile.update');
 
 
-Route::get('/p/create', [App\Http\Controllers\PostsController::class, 'create'])->name('post.create');
-Route::get('/p/{post}', [App\Http\Controllers\PostsController::class, 'show'])->name('post.show');
-Route::post('/p', [App\Http\Controllers\PostsController::class, 'store'])->name('post.store');
-Route::get('/', [App\Http\Controllers\PostsController::class, 'index'])->name('post.index');
+Route::get('/p/create', [PostsController::class, 'create'])->name('post.create');
+Route::get('/p/{post}/edit', [PostsController::class, 'edit'])->name('post.edit');
+Route::patch('/p/{post}', [ProfilesController::class, 'update'])->name('post.update');
+Route::get('/p/{post}', [PostsController::class, 'show'])->name('post.show');
+Route::post('/p', [PostsController::class, 'store'])->name('post.store');
+Route::get('/', [PostsController::class, 'index'])->name('post.index');
 

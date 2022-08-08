@@ -57,4 +57,25 @@ class PostsController extends Controller
             'follows' => $follows
         ]);
     }
+
+    public function edit(Post $post)
+    {
+        return view('posts.edit', compact('post'));
+    }
+
+    public function update(Post $post)
+    {
+        dd($post);
+
+        $this->authorize('update', $post);
+
+        $data = request()->validate([
+            'caption' => 'required',
+            'image' => ['required', 'image']
+        ]);
+
+        $post->update($data);
+
+        return redirect('/p/' . $post->id);
+    }
 }

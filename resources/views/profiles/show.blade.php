@@ -20,15 +20,16 @@
                         @endif
                     </form>
                     @endcannot
+                    @can('update', $user->profile)
+                    <form class="form-horizontal" action="{{route('profile.edit', array('id' => $user->id))}}" method="GET">
+                        <button class="btn btn-outline-dark ml-4" name="edit">Edit Profile</button>
+                    </form>
+                    @endcan
                 </div>
                 @can('update', $user->profile)
                 <a href="/p/create">Add New Post</a>
                 @endcan
             </div>
-
-            @can('update', $user->profile)
-            <a href="/profile/{{ $user->id }}/edit">Edit Profile</a>
-            @endcan
 
             <div class="d-flex pt-3">
                 <div class="pr-5"><strong>{{ $postCount }}</strong> posts</div>
