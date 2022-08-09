@@ -56,6 +56,7 @@ class ProfilesController extends Controller
 
     public function update($user)
     {
+        dd("halo");
         $data = request()->validate([
             'image' => 'image',
             'title' => 'required',

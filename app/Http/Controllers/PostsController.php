@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Redirect;
 use App\Models\Post;
+use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
 
 class PostsController extends Controller
@@ -17,6 +19,7 @@ class PostsController extends Controller
     public function index()
     {
         $users = auth()->user()->following()->pluck('profiles.user_id'); // ngambil user_id dari profile-profile yang kita follow
+        $users->push(Auth::id());
 
         $posts = Post::whereIn('user_id', $users)->with('user')->latest()->get();
 
@@ -45,7 +48,7 @@ class PostsController extends Controller
             'image' => $imagePath,
         ]);
 
-        return redirect('/profile/' . auth()->user()->username);
+        return redirect('/');
     }
 
     public function show(Post $post)
@@ -67,11 +70,8 @@ class PostsController extends Controller
 
     public function update(Post $post)
     {
-        dd($post);
-
         $data = request()->validate([
-            'caption' => 'required',
-            'image' => ['required', 'image']
+            'caption' => 'required'
         ]);
 
         $post->update($data);

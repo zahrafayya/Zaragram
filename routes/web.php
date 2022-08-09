@@ -28,15 +28,17 @@ Route::get('/email', function () {
 
 Route::post('follow/{user}', [FollowsController::class, 'store'])->name('follow');
 
+Route::get('/p/create', [PostsController::class, 'create'])->name('post.create');
+Route::get('/p/{post}/edit', [PostsController::class, 'edit'])->name('post.edit');
+Route::get('/p/{post}', [PostsController::class, 'show'])->name('post.show');
+Route::patch('/p/{post}', [PostsController::class, 'update'])->name('post.update');
+Route::post('/p', [PostsController::class, 'store'])->name('post.store');
+Route::get('/', [PostsController::class, 'index'])->name('post.index');
+
 Route::get('/profile/{username}', [ProfilesController::class, 'show'])->name('profile.show');
 Route::get('/profile/{profile_id}/edit', [ProfilesController::class, 'edit'])->name('profile.edit');
 Route::patch('/profile/{id}', [ProfilesController::class, 'update'])->name('profile.update');
 
 
-Route::get('/p/create', [PostsController::class, 'create'])->name('post.create');
-Route::get('/p/{post}/edit', [PostsController::class, 'edit'])->name('post.edit');
-Route::get('/p/{post}', [PostsController::class, 'show'])->name('post.show');
-Route::patch('/p/{post}', [ProfilesController::class, 'update'])->name('post.update');
-Route::post('/p', [PostsController::class, 'store'])->name('post.store');
-Route::get('/', [PostsController::class, 'index'])->name('post.index');
+
 

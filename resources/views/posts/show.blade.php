@@ -29,25 +29,21 @@
                         </form>
                         @endcannot
                     </div>
-                    @can('update', $post->user->profile)
+
                     <div class="d-flex align-items-center">
                         <a class="nav-link dropdown-toggle" style="color: #565E64" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                            @can('update', $post->user->profile)
                             <a class="dropdown-item" href="{{ route('post.edit', array('post' => $post->id)) }}">
                                 {{ __('Edit Post') }}
                             </a>
                             <a class="dropdown-item" href="{{ route('profile.show', array('username' => Auth::user()->username )) }}">
                                 {{ __('Delete Post') }}
                             </a>
-
-
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                @csrf
-                            </form>
+                            @endcan
                         </div>
                     </div>
-                    @endcan
                 </div>
             </div>
 
