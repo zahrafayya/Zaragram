@@ -24,9 +24,13 @@
                             <a class="dropdown-item" href="{{ route('post.edit', array('post' => $post->id)) }}">
                                 {{ __('Edit Post') }}
                             </a>
-                            <a class="dropdown-item" href="{{ route('profile.show', array('username' => Auth::user()->username )) }}">
-                                {{ __('Delete Post') }}
-                            </a>
+                            <form action="/p/{{ $post->id }}" enctype="multipart/form-data" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <button class="dropdown-item" href="{{ route('post.destroy', array('post' => $post->id)) }}">
+                                    {{ __('Delete Post') }}
+                                </button>
+                            </form>
                         @endcan
                     </div>
                 </div>

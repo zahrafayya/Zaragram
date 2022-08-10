@@ -67,6 +67,9 @@
                                     <a class="dropdown-item" href="{{ route('profile.show', array('username' => Auth::user()->username )) }}">
                                         {{ __('Profile') }}
                                     </a>
+                                    <a class="dropdown-item" href="">
+                                        {{ __('Settings') }}
+                                    </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

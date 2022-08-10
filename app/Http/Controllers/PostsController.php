@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Redirect;
 use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\URL;
 use Intervention\Image\Facades\Image;
 
 class PostsController extends Controller
@@ -77,5 +78,17 @@ class PostsController extends Controller
         $post->update($data);
 
         return redirect('/p/' . $post->id);
+    }
+
+    public function destroy(Post $post)
+    {
+        $url = URL::previous();
+
+        $post->delete();
+
+        if (str_contains($url, '/p/')) {
+            return redirect('/profile/' . $post->user->username);
+        }
+        else return redirect('/');
     }
 }
