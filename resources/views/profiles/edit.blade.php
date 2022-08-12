@@ -12,9 +12,11 @@
             </div>
 
             <div class="row">
-                <label for="image" class="col-form-label text-md-end">Profile Image</label>
-                <div class="row mb-3">
-                    <img src="/storage/{{ $user->profile->image }}" class="w-25">
+                <div class="d-flex flex-column">
+                    <label for="image" class="col-form-label text-md-end">Profile Image</label>
+                    <div class="col-6 p-0">
+                        <img src="{{ $user->profile->profileImage() }}" class="w-100">
+                    </div>
                 </div>
                 <input type="file" class="form-control" id="image" name="image">
 
