@@ -13,6 +13,9 @@
 
             <div class="row">
                 <label for="image" class="col-form-label text-md-end">Profile Image</label>
+                <div class="row mb-3">
+                    <img src="/storage/{{ $user->profile->image }}" class="w-25">
+                </div>
                 <input type="file" class="form-control" id="image" name="image">
 
                 @error('image')
