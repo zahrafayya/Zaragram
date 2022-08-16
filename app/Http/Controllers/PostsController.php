@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Redirect;
@@ -20,7 +21,7 @@ class PostsController extends Controller
     public function index()
     {
         $users = auth()->user()->following()->pluck('profiles.user_id'); // ngambil user_id dari profile-profile yang kita follow
-        $users->push(Auth::id());
+        $users->push(Auth::id()); // nambahin user_id sendiri
 
         $posts = Post::whereIn('user_id', $users)->with('user')->latest()->get();
 

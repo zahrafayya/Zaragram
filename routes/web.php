@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FollowsController;
 use App\Http\Controllers\ProfilesController;
 use App\Http\Controllers\PostsController;
+use App\Http\Controllers\CommentsController;
 use \App\Mail\NewUserWelcomeMail;
 
 
@@ -27,6 +28,9 @@ Route::get('/email', function () {
 });
 
 Route::post('follow/{user}', [FollowsController::class, 'store'])->name('follow');
+
+Route::post('comment/{post}', [CommentsController::class, 'store'])->name('comment.store');
+Route::delete('comment/{comment}', [CommentsController::class, 'destroy'])->name('comment.delete');
 
 Route::get('/p/create', [PostsController::class, 'create'])->name('post.create');
 Route::get('/p/{post}/edit', [PostsController::class, 'edit'])->name('post.edit');
