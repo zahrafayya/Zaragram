@@ -45,7 +45,43 @@
 
         <div class="row pb-4">
             <div class="col-6 offset-3" style="background-color: white; background-clip: content-box;">
-                <div class="mt-3 mb-1 ml-3">
+                <div class="mt-3 ml-3 d-flex">
+                    <div class="mr-4">
+                        <form action="{{ route('like', array('post' => $post->id)) }}" enctype="multipart/form-data" method="post">
+                            @csrf
+                            @if( (auth()->user()) && auth()->user()->likes->contains('user_id', $post->id) )
+                                <input type="image"
+                                       src="svg/ig_like2.png"
+                                       name="like"
+                                       id="like"
+                                       style="max-width: 24px"/>
+                            @else
+                                <input type="image"
+                                       src="svg/ig_like1.png"
+                                       name="like"
+                                       id="like"
+                                       style="max-width: 24px"/>
+                            @endif
+                        </form>
+                    </div>
+
+                    <div class="mr-4">
+                        <form action="/p/{{ $post->id }}" enctype="multipart/form-data" method="get">
+                            @csrf
+                            <input type="image"
+                                   src="svg/ig_comment.png"
+                                   style="max-width: 24px"/>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="mt-2 mb-1 ml-3">
+                    <span class="font-weight-bold">
+                        {{ $post->liked->count() }} likes
+                    </span>
+                </div>
+
+                <div class="mt-2 mb-1 ml-3">
                     <span class="font-weight-bold">
                         <a href="/profile/{{ $post->user->username }}">
                             <span class="text-dark">{{ $post->user->username }}</span>
@@ -74,7 +110,27 @@
                     @endif
                     <?php $i++; ?>
                 @endforeach
-                <div class="mb-3"></div>
+
+                <div class="ml-3 mt-1 mb-1">
+                    <span style="color: #565E64; font-size: smaller">
+                        {{ strtoupper($post->created_at->isoFormat('MMMM D, Y')) }}
+                    </span>
+                </div>
+                <div>
+                    <hr class="mb-1">
+
+                    <form action="{{ route('comment.store', array('post' => $post->id)) }}" enctype="multipart/form-data" method="post">
+                        @csrf
+                        <div class="form-group d-flex mr-3 ml-3 mb-2 mt-2">
+                            <input type="text"
+                                   class="form-control border-0 p-0"
+                                   id="comment"
+                                   name="comment"
+                                   placeholder="Add a comment...">
+                            <button type="submit" class="btn font-weight-bold" style="color: #007BFF">Post</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     @endforeach

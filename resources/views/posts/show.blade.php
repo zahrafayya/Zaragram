@@ -6,7 +6,7 @@
         <div class="col-7">
             <img src="/storage/{{ $post->image }}" class="w-100">
         </div>
-        <div class="col-5 d-flex justify-content-between flex-column">
+        <div class="col-5 d-flex justify-content-between flex-column pl-2 pr-2">
             <div>
                 <div class="d-flex align-items-center mt-2">
                     <div class="col-1 p-0">
@@ -52,7 +52,7 @@
                     </div>
                 </div>
 
-                <hr class="mb-2">
+                <hr class="mb-2" style="margin-left: -23px; margin-right: -8px">
 
                 <div class="d-flex align-items-center">
                     <div class="col-1 p-0">
@@ -103,8 +103,47 @@
             </div>
 
             <div>
-                <hr class="mb-1">
+                <hr style="margin-left: -23px; margin-right: -8px">
+                <div class="d-flex">
+                    <div class="mr-4">
+                        <form action="{{ route('like', array('post' => $post->id)) }}" enctype="multipart/form-data" method="post">
+                            @csrf
+                            @if( (auth()->user()) && auth()->user()->likes->contains('user_id', $post->id) )
+                                <input type="image"
+                                       src="/svg/ig_like2.png"
+                                       name="like"
+                                       id="like"
+                                       style="max-height: 24px"/>
+                            @else
+                                <input type="image"
+                                       src="/svg/ig_like1.png"
+                                       name="like"
+                                       id="like"
+                                       style="max-height: 24px"/>
+                            @endif
+                        </form>
+                    </div>
 
+                    <div class="mr-4">
+                        <form action="/p/{{ $post->id }}" enctype="multipart/form-data" method="get">
+                            @csrf
+                            <input type="image"
+                                   src="/svg/ig_comment.png"
+                                   style="max-width: 24px"/>
+                        </form>
+                    </div>
+                </div>
+                <div class="mt-1 mb-1">
+                    <span class="font-weight-bold">
+                        {{ $post->liked->count() }} likes
+                    </span>
+                </div>
+                <div class="mt-1 mb-1">
+                    <span style="color: #565E64; font-size: smaller">
+                        {{ strtoupper($post->created_at->isoFormat('MMMM D, Y')) }}
+                    </span>
+                </div>
+                <hr class="mb-2" style="margin-left: -23px; margin-right: -8px">
                 <form action="{{ route('comment.store', array('post' => $post->id)) }}" enctype="multipart/form-data" method="post">
                     @csrf
                     <div class="form-group d-flex">

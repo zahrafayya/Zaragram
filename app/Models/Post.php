@@ -18,4 +18,9 @@ class Post extends Model
     {
         return $this->hasMany(Comment::class)->orderBy('created_at', 'ASC');
     }
+
+    public function liked()
+    {
+        return $this->belongsToMany(User::class);
+    }
 }

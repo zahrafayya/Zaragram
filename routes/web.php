@@ -5,6 +5,7 @@ use App\Http\Controllers\FollowsController;
 use App\Http\Controllers\ProfilesController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\CommentsController;
+use App\Http\Controllers\LikesController;
 use \App\Mail\NewUserWelcomeMail;
 
 
@@ -28,6 +29,8 @@ Route::get('/email', function () {
 });
 
 Route::post('follow/{user}', [FollowsController::class, 'store'])->name('follow');
+
+Route::post('like/{post}', [LikesController::class, 'store'])->name('like');
 
 Route::post('comment/{post}', [CommentsController::class, 'store'])->name('comment.store');
 Route::delete('comment/{comment}', [CommentsController::class, 'destroy'])->name('comment.delete');

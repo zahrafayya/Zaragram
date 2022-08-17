@@ -16,8 +16,6 @@ class CommentsController extends Controller
 
     public function store(Post $post)
     {
-        $url = url()->previous();
-
         $data = request()->validate([
             'comment' => 'required'
         ]);
@@ -27,7 +25,7 @@ class CommentsController extends Controller
             'comment' => $data['comment']
         ]);
 
-        return redirect($url);
+        return redirect('/p/' . $post->id);
     }
 
     public function destroy(Comment $comment)

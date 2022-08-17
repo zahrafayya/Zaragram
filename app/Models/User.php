@@ -80,4 +80,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Comment::class)->orderBy('created_at', 'ASC');
     }
+
+    public function likes()
+    {
+        return $this->belongsToMany(Post::class);
+    }
 }
