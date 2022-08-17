@@ -29,20 +29,13 @@ class ProfilesController extends Controller
             return $user->following->count();
         });
 
-        if(is_null($id))
-        {
-            dd("error");
-        }
-        else
-        {
-            return view('profiles.show', compact(
-                'user',
-                'follows',
-                'postCount',
-                'followersCount',
-                'followingCount'
-            ));
-        }
+        return view('profiles.show', compact(
+            'user',
+            'follows',
+            'postCount',
+            'followersCount',
+            'followingCount'
+        ));
     }
 
     public function edit($profile)

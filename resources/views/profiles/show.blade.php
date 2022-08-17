@@ -31,8 +31,8 @@
 
             <div class="d-flex pt-3">
                 <div class="pr-5"><strong>{{ $postCount }}</strong> posts</div>
-                <div class="pr-5"><strong>{{ $followersCount }}</strong> followers</div>
-                <div class="pr-5"><strong>{{ $followingCount }}</strong> following</div>
+                <div class="pr-5"><a href="/profile/{{$user->username}}/followers" style="color: inherit; text-decoration: inherit"><strong>{{ $followersCount }}</strong> followers</a></div>
+                <div class="pr-5"><a href="/profile/{{$user->username}}/following" style="color: inherit; text-decoration: inherit"><strong>{{ $followingCount }}</strong> following</a></div>
             </div>
             <div class="pt-4 font-weight-bold">{{ $user->profile->title }}</div>
             <div>{{ $user->profile->description }}</div>
