@@ -28,10 +28,11 @@ Route::get('/email', function () {
     return new NewUserWelcomeMail();
 });
 
-Route::post('/like/{post}', [LikesController::class, 'store'])->name('like');
-
 Route::post('/comment/{post}', [CommentsController::class, 'store'])->name('comment.store');
 Route::delete('/comment/{comment}', [CommentsController::class, 'destroy'])->name('comment.delete');
+
+Route::post('/like/{post}', [LikesController::class, 'store'])->name('like');
+Route::get('/p/{post}/likes', [LikesController::class, 'get_likes'])->name('likes');
 
 Route::get('/p/create', [PostsController::class, 'create'])->name('post.create');
 Route::get('/p/{post}/edit', [PostsController::class, 'edit'])->name('post.edit');

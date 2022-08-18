@@ -76,9 +76,13 @@
                 </div>
 
                 <div class="mt-2 mb-1 ml-3">
-                    <span class="font-weight-bold">
-                        {{ $post->liked->count() }} likes
-                    </span>
+                    <a href="/p/{{$post->id}}/likes" style="color: inherit; text-decoration: inherit">
+                        <strong>
+                            <span class="font-weight-bold">
+                                {{ $post->liked->count() }} likes
+                            </span>
+                        </strong>
+                    </a>
                 </div>
 
                 <div class="mt-2 mb-1 ml-3">
