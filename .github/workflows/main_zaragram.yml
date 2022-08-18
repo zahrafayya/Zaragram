@@ -56,5 +56,5 @@ jobs:
         with:
           app-name: 'Zaragram'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_E1CE90C47C3842B490B9D067C8E70EE5 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_991D7916C6D7459598D29602E2814C9E }}
           package: .
