@@ -49,7 +49,7 @@
                     <div class="mr-4">
                         <form action="{{ route('like', array('post' => $post->id)) }}" enctype="multipart/form-data" method="post">
                             @csrf
-                            @if( (auth()->user()) && auth()->user()->likes->contains('user_id', $post->id) )
+                            @if( (auth()->user()) && auth()->user()->likes->contains('id', $post->id) )
                                 <input type="image"
                                        src="svg/ig_like2.png"
                                        name="like"
