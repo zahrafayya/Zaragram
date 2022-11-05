@@ -1,64 +1,93 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# Zaragram
+![image](https://user-images.githubusercontent.com/34309557/185559853-aea2bdd8-f201-42f0-aba4-95123441f508.png) <br />
+Zaragram adalah clone dari web aplikasi Instagram. Tujuan dari pembuatan aplikasi ini adalah untuk menyediakan medium bagi para penggunanya untuk saling mengikuti (follow), berbagi post dalam bentuk gambar, menyukai (like) post yang digemari dan memberikan komentar terhadap post yang ada.
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Link Deployment
+Zaragram dideploy menggunakan Microsoft Azure <br />
+https://zaragram.azurewebsites.net/
 
-## About Laravel
+## Fitur Aplikasi
+List fitur pada aplikasi ini adalah sebagai berikut.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+1. Authentification
+   1. Login & Register System
+   2. Forgot Password System
+   3. Remember Me
+  
+2. Authorification
+   * Penggunaan middleware dalam melakukan berbagai operasi CRUD.
+   
+3. Profile
+   * User akan memiliki profile yang berisi profile image, title, description dan url yang bisa diubah.
+   
+4. Post
+   * User dapat mengupload post berupa gambar ke dalam aplikasi, mengeditnya dan menghapusnya.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+5. Home Page
+   * Pada home page, user dapat melihat seluruh post yang pernah user tersebut buat serta post-post dari user-user yang di-follow
+   
+6. Like System
+   * User dapat memberikan like kepada postingan yang disukai dan juga mencabut like yang diberikan.
+   
+7. Follow System
+   * User dapat melakukan follow kepada user lain dan suatu user dapat di-follow oleh user lain. Apabila suatu user melakukan follow kepada user lain, user yang memfollow akan dapat melihat post-post dari user yang difollow di home page.
+   
+8. Comment System
+   * User dapat memberikan komentar kepada post apapun dan pemilik komentar juga dapat menghapus komentarnya.
+   
+9. Postman API
+   * Orang yang dapat mengakses API Zaragram melalui Postman dapat melakukan CRUD untuk Post.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Tampilan Aplikasi
+### Fitur 1: Authentification <br />
+![image](https://user-images.githubusercontent.com/34309557/185557781-abc92ce7-8f67-4e95-af2c-c16f48ee4f1e.png)
+![image](https://user-images.githubusercontent.com/34309557/185557866-bb25c310-eb0c-4b6e-b9f6-70b0bbef8b5a.png)
+![image](https://user-images.githubusercontent.com/34309557/185557956-fee0101b-fece-4228-8e49-854a50fbe624.png)
+![image](https://user-images.githubusercontent.com/34309557/185558053-2ddff12f-193b-4f35-90c9-d6b8af780292.png)
+![image](https://user-images.githubusercontent.com/34309557/185558306-9624e3e6-e0d4-4df7-9a6c-5dc5de643216.png)
+![image](https://user-images.githubusercontent.com/34309557/185558391-b35b1777-0c96-47b1-9600-c3426282d35f.png)
 
-## Learning Laravel
+### Fitur 2: Authorification <br />
+#### Drowdown untuk postingan sendiri <br />
+![image](https://user-images.githubusercontent.com/34309557/185559029-ae59fdb3-915c-4757-9071-71f233f582ab.png)
+#### Dropdown untuk postingan user lain <br />
+![image](https://user-images.githubusercontent.com/34309557/185558767-59fb70e0-68a2-4c43-a29f-e783c602c9e0.png)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Fitur 3: Profile <br />
+![image](https://user-images.githubusercontent.com/34309557/185559179-3327cc69-fc91-41a7-871b-f528886bb7c5.png)
+![image](https://user-images.githubusercontent.com/34309557/185559294-84ce66e6-05d5-4eb7-8d34-6f0ba0103287.png)
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Fitur 4: Post <br />
+![image](https://user-images.githubusercontent.com/34309557/185560741-c9efd571-a808-43b1-a8a1-2d5d3166a0da.png)
+![image](https://user-images.githubusercontent.com/34309557/185561112-b63520f8-b3a0-41b3-94f4-b4c761c6addf.png)
+![image](https://user-images.githubusercontent.com/34309557/185561207-ae4c9bf4-a42c-4132-a81f-8bbb095749c3.png)
+![image](https://user-images.githubusercontent.com/34309557/185577269-2e23a1a1-7bb7-4af9-be43-bb5632117916.png)
 
-## Laravel Sponsors
+### Fitur 5: Home Page
+![image](https://user-images.githubusercontent.com/34309557/185630605-ebe9b958-9e1e-4e01-8066-bb3082b1a674.png)
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+### Fitur 6: Like System <br />
+![image](https://user-images.githubusercontent.com/34309557/185570352-0554b694-27e8-4041-909d-3704dce5398b.png)
+![image](https://user-images.githubusercontent.com/34309557/185575385-01234dc9-e46b-4e41-b6d5-50867dd6b0e1.png)
 
-### Premium Partners
+### Fitur 7: Follow System <br />
+![image](https://user-images.githubusercontent.com/34309557/185570595-8c178f2e-4909-402b-83e7-49777ea80987.png)
+![image](https://user-images.githubusercontent.com/34309557/185570708-1bdc4750-1038-403b-8088-a5355f7f9397.png)
+![image](https://user-images.githubusercontent.com/34309557/185571069-e427243c-909c-4946-bb93-5d7ebafcfb97.png)
+![image](https://user-images.githubusercontent.com/34309557/185571130-52b98fe7-aeea-4923-8d13-43f56d31f297.png)
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+### Fitur 8: Comment System <br />
+![image](https://user-images.githubusercontent.com/34309557/185571570-dfd3d6f0-ef5a-43a7-8d22-50365360b9b7.png)
+![image](https://user-images.githubusercontent.com/34309557/185571813-f96d5df1-6b57-4b89-b505-8e626a99856f.png)
 
-## Contributing
+### Fitur 9: Postman API <br />
+![image](https://user-images.githubusercontent.com/34309557/185573388-209a1ff8-f497-4af1-9a8c-d85a6baae6dd.png)
+![image](https://user-images.githubusercontent.com/34309557/185573524-743d2391-ce85-45df-9176-f99ee10c2307.png)
+![image](https://user-images.githubusercontent.com/34309557/185573898-7a159d6b-f42a-44af-98db-55f9f13a657e.png)
+![image](https://user-images.githubusercontent.com/34309557/185574038-45eb4c9a-e6a0-4f9c-a32c-28e39e3f53bf.png)
+![image](https://user-images.githubusercontent.com/34309557/185574752-3cb66e1f-47d6-40d0-b987-6f9570522462.png)
+![image](https://user-images.githubusercontent.com/34309557/185574846-48bbbade-cd6f-4435-9bbd-8cabb1cba700.png)
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Kendala
+* Kesulitan ketika mendeploy web app ke dalam Microsoft Azure.
+* Kesulitan ketika menggunakan JavaScript ke dalam aplikasi sehingga web app ini 100% dibuat menggunakan laravel.
